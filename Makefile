@@ -36,9 +36,6 @@ $(LIBFT):
 $(NAME): $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	rm -f $(OBJS)
