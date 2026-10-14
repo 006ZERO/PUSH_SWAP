@@ -2,15 +2,8 @@
 
 <div align="center">
 
-# 🔄 push_swap
+#  push_swap
 ### *High-Performance Dual-Stack Sorting Engine & Algorithmic Dispatcher*
-
-[![Score](https://img.shields.io/badge/Score-100%2F100-success?style=for-the-badge&logo=42)](https://github.com)
-[![Norminette](https://img.shields.io/badge/Norminette-Passing-brightgreen?style=for-the-badge)](https://github.com/42School/Norminette)
-[![Language](https://img.shields.io/badge/C-99%20%2F%20GNU89-00599C?style=for-the-badge&logo=c)](https://en.wikipedia.org/wiki/C_(programming_language))
-[![Subject](https://img.shields.io/badge/Subject-v1.2%20(2026)-blueviolet?style=for-the-badge)](https://42.fr)
-[![Memory Leaks](https://img.shields.io/badge/Valgrind-0%20leaks%20%2F%200%20errors-brightgreen?style=for-the-badge)](https://valgrind.org)
-
 <p align="center">
   <b>push_swap</b> is a systems-level algorithmic optimization project in the 42 Common Core curriculum. It calculates the minimal sequence of stack operations required to sort an arbitrary sequence of 32-bit signed integers across two LIFO/FIFO stacks under strict instruction constraints.
 </p>
@@ -476,26 +469,22 @@ If invalid input is encountered, `push_swap` writes `Error\n` to **standard erro
 
 ---
 
-## 📚 Resources
+## Resources
 
 ### References
-- **Donald E. Knuth**: *The Art of Computer Programming, Volume 3: Sorting and Searching* (ISBN 0-201-89685-0).
-- **Thomas H. Cormen, et al.**: *Introduction to Algorithms (CLRS)* — Non-comparison Sorting and Inversion Invariants.
-- **42 Curriculum Specification**: `push_swap` Subject PDF version 1.2 (2026).
+- **42 Curriculum Specification**: `push_swap` Subject PDF version(2026).
 
 ### AI Usage Disclosure
 Pursuant to Chapter 3 and Chapter 7 of the 42 project guidelines, Artificial Intelligence tools were utilized for the following aspects of this project:
-1. **Heuristic Architecture**: Identifying bidirectional proximity search mechanics for chunk sorting to reduce rotations below 5500 operations for 500 numbers.
-2. **Defensive Programming & Leaks**: Analyzing memory cleanup paths for `ft_split` token matrices during invalid syntax and overflow errors.
-3. **Documentation Visuals**: Generating Mermaid ER models, ASCII data structure diagrams, and Markdown layout structures.
+1. **Documentation Visuals**: Generating Mermaid ER models, ASCII data structure diagrams, and Markdown layout structures.
 
 ---
 
-## 👥 Contributors
+##  Contributors
 
 *Project developed under the 42 curriculum by:*
 
-- **`<login1>`**
+- **`gabusalm`**
   - Core data structure design and linked stack implementation (`stack_linked.c`)
   - Low-level stack operations (`push_a_b.c`, `rotate_a_b.c`, `rotrotate_a_b.c`, `swap_a_b.c`)
   - CLI argument processing, tokenization, and overflow detection (`process_argument.c`, `string_argument.c`)
