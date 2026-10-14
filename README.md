@@ -490,7 +490,7 @@ Pursuant to Chapter 3 and Chapter 7 of the 42 project guidelines, Artificial Int
   - CLI argument processing, tokenization, and overflow detection (`process_argument.c`, `string_argument.c`)
   - Small set hardcoded algorithms and Insertion Sort engine (`sort_three.c`, `sort_four.c`, `sort_five.c`, `simple_big_5number.c`)
 
-- **`<login2>`**
+- **`babushar`**
   - Inversion disorder metric formula and pair counter (`disorder.c`)
   - Two-way chunk sorting engine with dynamic sizing heuristics (`sort_medium.c`, `medium_utils.c`)
   - Binary LSD Radix sorting engine (`complex_sort.c`)
