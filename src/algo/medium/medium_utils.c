@@ -51,23 +51,35 @@ void	move_to_top_stack(t_stack *s, int index, char stack_name)
 	}
 }
 
-int	find_chunk_index(t_stack *a, int start, int end)
+int	find_best_chunk_pos(t_stack *a, int start, int end)
 {
 	t_node	*cur;
+	int		top_pos;
+	int		bot_pos;
 	int		i;
 
 	if (!a || !a->top)
 		return (-1);
+	top_pos = -1;
+	bot_pos = -1;
 	cur = a->top;
 	i = 0;
 	while (cur)
 	{
 		if (cur->index >= start && cur->index <= end)
-			return (i);
+		{
+			if (top_pos == -1)
+				top_pos = i;
+			bot_pos = i;
+		}
 		cur = cur->next;
 		i++;
 	}
-	return (-1);
+	if (top_pos == -1)
+		return (-1);
+	if ((a->size - bot_pos) < top_pos)
+		return (bot_pos);
+	return (top_pos);
 }
 
 int	find_max_index_pos(t_stack *b)

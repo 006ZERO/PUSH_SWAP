@@ -26,15 +26,15 @@ void	assign_indexes(t_stack *a, int *sorted, int count)
 	}
 }
 
-static void	handle_element_in_chunk(t_stack *a, t_stack *b, int start,
-		int chunk)
+static void	handle_element_in_chunk(t_stack *a, t_stack *b,
+									int start, int chunk)
 {
-	int	index;
+	int	pos;
 
-	index = find_chunk_index(a, start, start + chunk - 1);
-	if (index == -1)
+	pos = find_best_chunk_pos(a, start, start + chunk - 1);
+	if (pos == -1)
 		return ;
-	move_to_top_stack(a, index, 'a');
+	move_to_top_stack(a, pos, 'a');
 	push_b(a, b);
 	if (b->top->index < start + (chunk / 2))
 		rb(b);
@@ -65,7 +65,7 @@ static void	push_chunks_to_b(t_stack *a, t_stack *b, int count, int chunk)
 		end = count - 1;
 	while (a->size > 0 && start < count)
 	{
-		if (find_chunk_index(a, start, end) != -1)
+		if (find_best_chunk_pos(a, start, end) != -1)
 			handle_element_in_chunk(a, b, start, chunk);
 		else
 		{
@@ -88,10 +88,12 @@ void	medium_sort(t_stack *a, t_stack *b, int *original, int count)
 	ft_memcpy(sorted, original, sizeof(int) * count);
 	bubble_sort_array(sorted, count);
 	assign_indexes(a, sorted, count);
-	if (count <= 100)
+	if (count <= 10)
+		chunk = 3;
+	else if (count <= 100)
 		chunk = 15;
 	else
-		chunk = 35;
+		chunk = 32;
 	push_chunks_to_b(a, b, count, chunk);
 	push_back_to_a(a, b);
 	free(sorted);

@@ -1,10 +1,11 @@
-
 #include "push_swap.h"
 
 int	is_sorted(t_stack *a)
 {
 	t_node	*cur;
 
+	if (!a || !a->top)
+		return (1);
 	cur = a->top;
 	while (cur && cur->next)
 	{
@@ -15,52 +16,65 @@ int	is_sorted(t_stack *a)
 	return (1);
 }
 
-static void	restore_stack(t_stack *a, int len)
+static int	find_min_pos(t_stack *a)
 {
-	int	i;
+	t_node	*cur;
+	int		min;
+	int		min_pos;
+	int		pos;
 
-	i = 0;
-	while (i < len - 1)
+	if (!a || !a->top)
+		return (-1);
+	cur = a->top;
+	min = cur->value;
+	min_pos = 0;
+	pos = 0;
+	while (cur)
 	{
-		rra(a);
-		i++;
-	}
-}
-
-static int	bubble_pass(t_stack *a, int len)
-{
-	int	i;
-	int	did_swap;
-
-	i = 0;
-	did_swap = 0;
-	while (i < len - 1)
-	{
-		if (a->top->value > a->top->next->value)
+		if (cur->value < min)
 		{
-			swap_a(a);
-			did_swap = 1;
+			min = cur->value;
+			min_pos = pos;
 		}
-		ra(a);
-		i++;
+		cur = cur->next;
+		pos++;
 	}
-	restore_stack(a, len);
-	return (did_swap);
+	return (min_pos);
 }
 
-void	bubble_sort(t_stack *a)
+static void	move_min_to_top(t_stack *a, int pos)
 {
-	int	len;
-	int	did_swap;
-
-	if (!a || a->size < 2)
-		return ;
-	len = a->size;
-	while (!is_sorted(a))
+	if (pos <= a->size / 2)
 	{
-		did_swap = bubble_pass(a, len);
-		if (!did_swap)
-			break ;
-		len--;
+		while (pos > 0)
+		{
+			ra(a);
+			pos--;
+		}
 	}
+	else
+	{
+		pos = a->size - pos;
+		while (pos > 0)
+		{
+			rra(a);
+			pos--;
+		}
+	}
+}
+
+void	insertion_sort(t_stack *a, t_stack *b)
+{
+	int	pos;
+
+	if (!a || is_sorted(a))
+		return ;
+	while (a->size > 0 && !is_sorted(a))
+	{
+		pos = find_min_pos(a);
+		move_min_to_top(a, pos);
+		push_b(a, b);
+	}
+	while (b->size > 0)
+		push_a(a, b);
 }

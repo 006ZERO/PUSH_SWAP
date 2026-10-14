@@ -1,11 +1,7 @@
-
-
 NAME		= push_swap
 
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
-
-INCLUDES	= -Iincludes -Ilibft
+CFLAGS		= -Wall -Wextra -Werror -Iincludes -Ilibft
 
 LIBFT_DIR	= libft
 LIBFT		= $(LIBFT_DIR)/libft.a
@@ -14,21 +10,21 @@ SRCS		= \
 	src/main/push_swap.c \
 	src/main/benchmark.c \
 	src/main/parse_options.c \
-	src/algorithm/disorder.c \
-	src/algorithm/simple/simple_big_5number.c \
-	src/algorithm/simple/sort_three.c \
-	src/algorithm/simple/sort_four.c \
-	src/algorithm/simple/sort_five.c \
-	src/algorithm/medium/medium_utils.c \
-	src/algorithm/medium/sort_medium.c \
-	src/algorithm/complex/complex_sort.c \
-	src/argument/process_argument.c \
-	src/argument/stack_linked.c \
-	src/argument/string_argument.c \
-	src/operation/push_a_b.c \
-	src/operation/rotate_a_b.c \
-	src/operation/rotrotate_a_b.c \
-	src/operation/swap_a_b.c
+	src/algo/disorder.c \
+	src/algo/simple/simple_big_5number.c \
+	src/algo/simple/sort_three.c \
+	src/algo/simple/sort_four.c \
+	src/algo/simple/sort_five.c \
+	src/algo/medium/medium_utils.c \
+	src/algo/medium/sort_medium.c \
+	src/algo/complex/complex_sort.c \
+	src/arg/process_argument.c \
+	src/arg/stack_linked.c \
+	src/arg/string_argument.c \
+	src/op/push_a_b.c \
+	src/op/rotate_a_b.c \
+	src/op/rotrotate_a_b.c \
+	src/op/swap_a_b.c
 
 OBJS		= $(SRCS:.c=.o)
 
@@ -39,6 +35,9 @@ $(LIBFT):
 
 $(NAME): $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
