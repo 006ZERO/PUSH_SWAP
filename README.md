@@ -1,4 +1,4 @@
-*This activity has been created as part of the 42 curriculum by <login1>, gabusalm.*
+*This activity has been created as part of the 42 curriculum by babushar,gabusalm.*
 
 <div align="center">
 
