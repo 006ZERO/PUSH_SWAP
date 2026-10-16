@@ -1,19 +1,32 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabusalm <gabusalm@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/27 12:25:38 by gabusalm          #+#    #+#             */
+/*   Updated: 2026/09/27 13:06:49 by gabusalm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putnbr_fd(int n, int fd) {
-  long s;
-  char c;
+void	ft_putnbr_fd(int n, int fd)
+{
+	long	s;
+	char	c;
 
-  s = n;
-  if (s < 0) {
-    s = -s;
-    write(fd, "-", 1);
-  }
-  if (s > 9) {
-    ft_putnbr_fd((s / 10), fd);
-  }
-  c = (s % 10) + '0';
-  write(fd, &c, 1);
+	s = n;
+	if (s < 0)
+	{
+		s = -s;
+		write(fd, "-", 1);
+	}
+	if (s > 9)
+	{
+		ft_putnbr_fd((s / 10), fd);
+	}
+	c = (s % 10) + '0';
+	write(fd, &c, 1);
 }

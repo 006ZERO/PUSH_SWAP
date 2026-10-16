@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_argument.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabusalm <gabusalm@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/16 13:49:14 by gabusalm          #+#    #+#             */
+/*   Updated: 2026/10/16 13:50:34 by gabusalm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include <stdlib.h>
 
 /*
 ** check_duplicates: Checks if there are duplicate numbers in the array

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   medium_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabusalm <gabusalm@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/16 13:27:42 by gabusalm          #+#    #+#             */
+/*   Updated: 2026/10/16 13:43:37 by gabusalm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	bubble_sort_array(int *arr, int n)
@@ -51,35 +63,40 @@ void	move_to_top_stack(t_stack *s, int index, char stack_name)
 	}
 }
 
-int	find_best_chunk_pos(t_stack *a, int start, int end)
+static void	scan_chunk(t_stack *a, int start, int end, int pos[2])
 {
 	t_node	*cur;
-	int		top_pos;
-	int		bot_pos;
 	int		i;
 
-	if (!a || !a->top)
-		return (-1);
-	top_pos = -1;
-	bot_pos = -1;
+	pos[0] = -1;
+	pos[1] = -1;
 	cur = a->top;
 	i = 0;
 	while (cur)
 	{
 		if (cur->index >= start && cur->index <= end)
 		{
-			if (top_pos == -1)
-				top_pos = i;
-			bot_pos = i;
+			if (pos[0] == -1)
+				pos[0] = i;
+			pos[1] = i;
 		}
 		cur = cur->next;
 		i++;
 	}
-	if (top_pos == -1)
+}
+
+int	find_best_chunk_pos(t_stack *a, int start, int end)
+{
+	int	pos[2];
+
+	if (!a || !a->top)
 		return (-1);
-	if ((a->size - bot_pos) < top_pos)
-		return (bot_pos);
-	return (top_pos);
+	scan_chunk(a, start, end, pos);
+	if (pos[0] == -1)
+		return (-1);
+	if ((a->size - pos[1]) < pos[0])
+		return (pos[1]);
+	return (pos[0]);
 }
 
 int	find_max_index_pos(t_stack *b)

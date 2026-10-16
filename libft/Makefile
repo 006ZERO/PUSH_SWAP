@@ -16,15 +16,16 @@ SRCS	= ft_atoi.c ft_bzero.c ft_calloc.c \
 	   	  ft_strncmp.c ft_strnstr.c ft_strrchr.c \
 	   	  ft_strtrim.c ft_substr.c ft_tolower.c \
 	   	  ft_toupper.c ft_lstnew.c ft_lstadd_front.c \
-				ft_lstadd_back.c ft_lstsize.c ft_lstlast.c \
+	   	  ft_lstadd_back.c ft_lstsize.c ft_lstlast.c \
 	   	  ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
 	   	  ft_lstmap.c
 OBJS	= $(SRCS:.c=.o)
 
-all: $(NAME);
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
+
 clean:
 	rm -f $(OBJS)
 

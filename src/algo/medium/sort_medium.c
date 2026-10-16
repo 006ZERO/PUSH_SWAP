@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_medium.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gabusalm <gabusalm@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/16 13:27:58 by gabusalm          #+#    #+#             */
+/*   Updated: 2026/10/16 13:27:59 by gabusalm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	assign_indexes(t_stack *a, int *sorted, int count)
@@ -26,8 +38,8 @@ void	assign_indexes(t_stack *a, int *sorted, int count)
 	}
 }
 
-static void	handle_element_in_chunk(t_stack *a, t_stack *b,
-									int start, int chunk)
+static void	handle_element_in_chunk(t_stack *a, t_stack *b, int start,
+		int chunk)
 {
 	int	pos;
 
