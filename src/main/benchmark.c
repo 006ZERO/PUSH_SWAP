@@ -103,10 +103,15 @@ static void	print_strategy_info(int count, double disorder, t_options *opt)
 
 void	print_benchmark(int count, double disorder, t_options *opt)
 {
+	int	hundredths;
+
+	hundredths = (int)(disorder * 10000.0 + 0.5);
 	ft_putstr_fd("[bench] disorder: ", 2);
-	ft_putnbr_fd((int)(disorder * 100), 2);
+	ft_putnbr_fd(hundredths / 100, 2);
 	ft_putstr_fd(".", 2);
-	ft_putnbr_fd((int)(disorder * 10000) % 100, 2);
+	if (hundredths % 100 < 10)
+		ft_putstr_fd("0", 2);
+	ft_putnbr_fd(hundredths % 100, 2);
 	ft_putstr_fd("%\n", 2);
 	print_strategy_info(count, disorder, opt);
 	op_tracker(NULL, 2);
