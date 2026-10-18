@@ -100,23 +100,23 @@ int	*parse_arguments(int argc, char **argv, int *count)
 {
 	char	**tokens;
 	int		*numbers;
-	int		i;
 
 	if (argc == 2)
 		tokens = ft_split(argv[1], ' ');
 	else
 		tokens = &argv[1];
-	i = 0;
-	while (tokens[i])
-		i++;
-	*count = i;
-	numbers = convert_and_allocate(tokens, *count);
-	if (!numbers)
+	if (!tokens)
 		return (NULL);
-	if (!check_duplicates(numbers, *count))
+	*count = 0;
+	while (tokens[*count])
+		(*count)++;
+	numbers = NULL;
+	if (*count > 0)
+		numbers = convert_and_allocate(tokens, *count);
+	if (numbers && !check_duplicates(numbers, *count))
 	{
 		free(numbers);
-		return (NULL);
+		numbers = NULL;
 	}
 	cleanup(tokens, argc);
 	return (numbers);
